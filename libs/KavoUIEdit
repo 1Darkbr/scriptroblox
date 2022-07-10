@@ -369,7 +369,8 @@ function Kavo.CreateLib(kavName, themeList)
 
     local first = true
 
-    function Tabs:NewTab(tabName)
+    function Tabs:NewTab(FrameName, tabName)
+    	FrameName = FrameName or "Name Frame Page"
         tabName = tabName or "Tab"
         local tabButton = Instance.new("TextButton")
         local UICorner = Instance.new("UICorner")
@@ -384,7 +385,7 @@ function Kavo.CreateLib(kavName, themeList)
             }):Play()
         end
 
-        page.Name = "Page"
+        page.Name = FrameName
         page.Parent = Pages
         page.Active = true
         page.BackgroundColor3 = themeList.Background
@@ -469,7 +470,8 @@ function Kavo.CreateLib(kavName, themeList)
             end
         end)()
     
-        function Sections:NewSection(secName, hidden)
+        function Sections:NewSection(SectionName, secName, hidden)
+	    SectionName = SectionName or "edit name sectionFrame"
             secName = secName or "Section"
             local sectionFunctions = {}
             local modules = {}
@@ -488,7 +490,7 @@ function Kavo.CreateLib(kavName, themeList)
 		sectionHead.Visible = true
 	    end
 
-            sectionFrame.Name = "sectionFrame"
+            sectionFrame.Name = SectionName
             sectionFrame.Parent = page
             sectionFrame.BackgroundColor3 = themeList.Background--36, 37, 43
             sectionFrame.BorderSizePixel = 0
