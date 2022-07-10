@@ -775,7 +775,7 @@ function Kavo.CreateLib(kavName, themeList)
             end
 
             function Elements:NewTextBox(bname, tname, tTip, callback)
-	    	bname = bname name textboxElement
+	    	bname = bname or "Edit name textboxElement"
                 tname = tname or "Textbox"
                 tTip = tTip or "Gets a value of Textbox"
                 callback = callback or function() end
@@ -787,7 +787,7 @@ function Kavo.CreateLib(kavName, themeList)
                 local UICorner_2 = Instance.new("UICorner")
                 local togName = Instance.new("TextLabel")
 
-                textboxElement.Name = "bname"
+                textboxElement.Name = bname
                 textboxElement.Parent = sectionInners
                 textboxElement.BackgroundColor3 = themeList.ElementColor
                 textboxElement.ClipsDescendants = true
