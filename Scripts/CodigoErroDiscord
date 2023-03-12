@@ -1,0 +1,37 @@
+local module = {}
+
+local Patentes = require(game.ReplicatedStorage.Patentes)
+local doorOpened = false
+
+function module.action(player)
+    local patenteValue = Patentes[player.leaderstats.Patente.Value][1]
+    local configs = script.Parent.Configuration
+
+    if patenteValue >= 4 then
+        if not doorOpened then
+            doorOpened = true
+            script.Parent.Door.Position = Vector3.new(script.Parent.Door.Position.X + 1.741, script.Parent.Door.Position.Y, script.Parent.Door.Position.Z - 1.773)
+            script.Parent.Door.Orientation = Vector3.new(script.Parent.Door.Orientation.X, script.Parent.Door.Orientation.Y - 90, script.Parent.Door.Orientation.Z)
+            
+            script.Parent.Glass.Position = Vector3.new(script.Parent.Glass.Position.X + 2.604, script.Parent.Glass.Position.Y, script.Parent.Glass.Position.Z - 2.636)
+            script.Parent.Glass.Orientation = Vector3.new(script.Parent.Glass.Orientation.X, script.Parent.Glass.Orientation.Y - 90, script.Parent.Glass.Orientation.Z)
+            
+            script.Parent.Door.Sound.SoundId = "rbxassetid://157167203"
+            script.Parent.Door.Sound:Play()
+            configs.ActionName.Value = "PARA FECHAR"
+        else
+            doorOpened = false
+            script.Parent.Door.Position = Vector3.new(script.Parent.Door.Position.X - 1.741, script.Parent.Door.Position.Y, script.Parent.Door.Position.Z + 1.773)
+            script.Parent.Door.Orientation = Vector3.new(script.Parent.Door.Orientation.X, script.Parent.Door.Orientation.Y + 90, script.Parent.Door.Orientation.Z)
+            
+            script.Parent.Glass.Position = Vector3.new(script.Parent.Glass.Position.X - 2.604, script.Parent.Glass.Position.Y, script.Parent.Glass.Position.Z + 2.636)
+            script.Parent.Glass.Orientation = Vector3.new(script.Parent.Glass.Orientation.X, script.Parent.Glass.Orientation.Y + 90, script.Parent.Glass.Orientation.Z)
+            
+            script.Parent.Door.Sound.SoundId = "rbxassetid://180090455"
+            script.Parent.Door.Sound:Play()
+            configs.ActionName.Value = "PARA ABRIR"
+        end
+    end
+end
+-- 2.636
+return module
